@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B485AC35-94FF-4AE3-A2C7-F16AAA8B57BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MiForms</RootNamespace>
+    <AssemblyName>MiForms</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\MiForms.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\MiForms.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SFML.Audio, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SFML.Audio.2.5.0\lib\netstandard2.0\SFML.Audio.dll</HintPath>
+    </Reference>
+    <Reference Include="SFML.Graphics, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SFML.Graphics.2.5.0\lib\netstandard2.0\SFML.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="SFML.System, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SFML.System.2.5.0\lib\netstandard2.0\SFML.System.dll</HintPath>
+    </Reference>
+    <Reference Include="SFML.Window, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SFML.Window.2.5.0\lib\netstandard2.0\SFML.Window.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Source\DropDownBox1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DropDownBox.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Source\MiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\SFML\ColorEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\SFML\ColorEditor.Designer.cs">
+      <DependentUpon>ColorEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\DropDownBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\DropDownBox.Designer.cs">
+      <DependentUpon>DropDownBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\EnumBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\EnumBox.Designer.cs">
+      <DependentUpon>EnumBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\FileLoader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\FileLoader.Designer.cs">
+      <DependentUpon>FileLoader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\SFML\FloatRectEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\SFML\FloatRectEditor.Designer.cs">
+      <DependentUpon>FloatRectEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\SFML\IntRectEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\SFML\IntRectEditor.Designer.cs">
+      <DependentUpon>IntRectEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\NumberBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\NumberBox.Designer.cs">
+      <DependentUpon>NumberBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\SFML\Vec2fEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\SFML\Vec2fEditor.Designer.cs">
+      <DependentUpon>Vec2fEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\SFML\Vec2iEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\SFML\Vec2iEditor.Designer.cs">
+      <DependentUpon>Vec2iEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\SFML\Vec2uEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\SFML\Vec2uEditor.Designer.cs">
+      <DependentUpon>Vec2uEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\WindowButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\WindowButtons.Designer.cs">
+      <DependentUpon>WindowButtons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Theme.cs" />
+    <Compile Include="Source\MiControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="licence.md" />
+    <None Include="packages.config" />
+    <None Include="readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Source\DropDownBox.resx">
+      <DependentUpon>DropDownBox.cs</DependentUpon>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DropDownBox1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\EnumBox.resx">
+      <DependentUpon>EnumBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\FileLoader.resx">
+      <DependentUpon>FileLoader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\SFML\ColorEditor.resx">
+      <DependentUpon>ColorEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\SFML\FloatRectEditor.resx">
+      <DependentUpon>FloatRectEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\SFML\IntRectEditor.resx">
+      <DependentUpon>IntRectEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\NumberBox.resx">
+      <DependentUpon>NumberBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\SFML\Vec2fEditor.resx">
+      <DependentUpon>Vec2fEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\SFML\Vec2iEditor.resx">
+      <DependentUpon>Vec2iEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\SFML\Vec2uEditor.resx">
+      <DependentUpon>Vec2uEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\WindowButtons.resx">
+      <DependentUpon>WindowButtons.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
+    <Content Include="Assets\Dark\Close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Dark\Down.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Dark\EyeDropper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Dark\Left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Dark\Minimize.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Light\Open.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Dark\Open.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Dark\Right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Dark\Sqaure.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Dark\Up.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Light\Close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Light\Down.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Light\EyeDropper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Light\Left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Light\Minimize.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Light\Right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Light\Sqaure.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Light\Up.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

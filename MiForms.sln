@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiForms", "MiForms.csproj", "{B485AC35-94FF-4AE3-A2C7-F16AAA8B57BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B485AC35-94FF-4AE3-A2C7-F16AAA8B57BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B485AC35-94FF-4AE3-A2C7-F16AAA8B57BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B485AC35-94FF-4AE3-A2C7-F16AAA8B57BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B485AC35-94FF-4AE3-A2C7-F16AAA8B57BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07958827-A9B0-4477-B617-94C73D8D7E40}
+	EndGlobalSection
+EndGlobal
