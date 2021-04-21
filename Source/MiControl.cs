@@ -29,6 +29,7 @@ namespace MiForms
 	/// <summary>
 	///   Base class for MiForms controls.
 	/// </summary>
+	[ToolboxItem( false )]
     public class MiControl : UserControl, IComponent
     {
 		/// <summary>

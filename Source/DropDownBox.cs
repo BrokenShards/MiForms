@@ -93,7 +93,7 @@ namespace MiForms
 		public int SelectedIndex
 		{
 			get { return box.SelectedIndex; }
-			set { box.SelectedIndex = value; }
+			set { try { box.SelectedIndex = value; } catch { } }
 		}
 		/// <summary>
 		///   The currently selected item (null if nothing is selected).
@@ -126,7 +126,7 @@ namespace MiForms
 		public bool Sorted
 		{
 			get { return box.Sorted; }
-			set { box.Sorted = value; }
+			set { try { box.Sorted = value; } catch { } }
 		}
 		/// <summary>
 		///   How far the box drops down in pixels.
@@ -134,7 +134,7 @@ namespace MiForms
 		public uint DropDownHeight
 		{
 			get { return (uint)box.DropDownHeight; }
-			set { box.DropDownHeight = (int)value; }
+			set { try { box.DropDownHeight = (int)value; } catch { } }
 		}
 		/// <summary>
 		///   How wide the drop down box is in pixels.
@@ -142,7 +142,7 @@ namespace MiForms
 		public uint DropDownWidth
 		{
 			get { return (uint)box.DropDownWidth; }
-			set { box.DropDownWidth = (int)value; }
+			set { try { box.DropDownWidth = (int)value; } catch { } }
 		}
 
 		/// <summary>
@@ -151,7 +151,7 @@ namespace MiForms
 		public uint ItemHeight
 		{
 			get { return (uint)box.ItemHeight; }
-			set { box.ItemHeight = (int)value; }
+			set { try { box.ItemHeight = (int)value; } catch { } }
 		}
 		/// <summary>
 		///   Maximum drop down items.
@@ -159,7 +159,7 @@ namespace MiForms
 		public uint MaxDropDownItems
 		{
 			get { return (uint)box.MaxDropDownItems; }
-			set { box.MaxDropDownItems = (int)value; }
+			set { try { box.MaxDropDownItems = (int)value; } catch { } }
 		}
 		/// <summary>
 		///   Maximum length of text.
@@ -193,8 +193,8 @@ namespace MiForms
 			butPanel.BackColor = BackColor;
 			butPanel.ForeColor = ForeColor;
 
-			box.BackgroundImage = box.DroppedDown ? ( Theme.UseDarkTheme ? butImages.Images[ 1 ] : butImages.Images[ 3 ] ) :
-			                                        ( Theme.UseDarkTheme ? butImages.Images[ 0 ] : butImages.Images[ 2 ] );
+			but.BackgroundImage = box.DroppedDown ? butImages.Images[ Theme.UseDarkTheme ? 1 : 3 ] :
+			                                        butImages.Images[ Theme.UseDarkTheme ? 0 : 2 ];
 		}
 
 		private void ButtonClicked( object sender, EventArgs e )

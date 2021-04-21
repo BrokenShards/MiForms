@@ -101,7 +101,6 @@ namespace MiForms
 			{ 
 				m_boxOff = (int)value;
 				OnResize( this, EventArgs.Empty );
-
 			}
 		}
 
@@ -207,7 +206,7 @@ namespace MiForms
 				label.Width = m_labLen;
 
 				boxPanel.Left  = label.Right + m_boxOff;
-				boxPanel.Width = Width - butPanel.Width - boxPanel.Left;
+				boxPanel.Width = Width - butPanel.Width - 2 - boxPanel.Left;
 			}
 			else
 			{
@@ -216,10 +215,10 @@ namespace MiForms
 				label.Left = Right;
 
 				boxPanel.Left  = m_boxOff;
-				boxPanel.Width = Width - butPanel.Width;
+				boxPanel.Width = Width - butPanel.Width - 2;
 			}
 
-			butPanel.Left = Right - butPanel.Width - 2;
+			butPanel.Left = boxPanel.Right + 2;
 		}
 
 		private void PathTextChanged( object sender, EventArgs e )

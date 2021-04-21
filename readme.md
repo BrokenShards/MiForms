@@ -14,5 +14,10 @@ appear in your Toolbox after it is built.
 
 ## Changelog
 
+### Version 0.2.0
+- Added `FileSaver` control for saving files.
+- Added `FolderLoader` control for selecting existing folders.
+- Bugfixes.
+
 ### Version 0.1.0
 - Initial release.

@@ -283,10 +283,18 @@ namespace MiForms
 			bLab.ForeColor   = ForeColor;
 			aLab.BackColor   = BackColor;
 			aLab.ForeColor   = ForeColor;
+			rBox.BackColor   = BackColor;
+			rBox.ForeColor   = ForeColor;
+			gBox.BackColor   = BackColor;
+			gBox.ForeColor   = ForeColor;
+			bBox.BackColor   = BackColor;
+			bBox.ForeColor   = ForeColor;
+			aBox.BackColor   = BackColor;
+			aBox.ForeColor   = ForeColor;
 			colBut.BackColor = BackColor;
 			colBut.ForeColor = ForeColor;
 
-			colBut.BackgroundImage = Theme.UseDarkTheme ? colImages.Images[ 0 ] : colImages.Images[ 1 ];
+			colBut.BackgroundImage = colImages.Images[ Theme.UseDarkTheme ? 0 : 1 ];
 		}
 
 		private void OnLoadControl( object sender, EventArgs e )

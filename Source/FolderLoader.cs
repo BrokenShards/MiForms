@@ -1,5 +1,5 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
-// EnumBox.cs 
+// FolderLoader.cs
 ////////////////////////////////////////////////////////////////////////////////
 //
 // MiForms - A basic set of Windows Forms controls for use with SFML.
@@ -22,40 +22,28 @@
 
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
-
-using Size = System.Drawing.Size;
 
 namespace MiForms
 {
 	/// <summary>
-	///   A box that lets the user select an enum value.
+	///   A component that contains a path bar and a button that opens a dialog to select a folder.
 	/// </summary>
 	[ToolboxItem( true )] [DesignTimeVisible( true )]
-	public partial class EnumBox : MiControl, IComponent
+	public partial class FolderLoader : MiControl, IComponent
 	{
 		/// <summary>
 		///   Constructor.
 		/// </summary>
-		public EnumBox()
-		:	base()
+		public FolderLoader()
 		{
 			InitializeComponent();
+			Resize  += OnResize;
+			pathBox.TextChanged += PathTextChanged;
 			OnThemeChanged( null, EventArgs.Empty );
-
-			Resize += OnResize;
-			box.SelectedIndexChanged += SelectionIndexChanged;
-		}
-		/// <summary>
-		///   Constructor setting enum type.
-		/// </summary>
-		/// <param name="etype">
-		///   The enum type.
-		/// </param>
-		public EnumBox( Type etype )
-		:	this()
-		{
-			EnumType = etype;
+			m_labLen = label.Width;
+			m_boxOff = 0;
 		}
 
 		/// <summary>
@@ -76,29 +64,17 @@ namespace MiForms
 		/// <summary>
 		///   The length in pixels of the label.
 		/// </summary>
-		public uint LabelWidth
+		public uint LabelLength
 		{
 			get { return (uint)m_labLen; }
-			set
+			set 
 			{
 				m_labLen = (int)value;
 				OnResize( this, EventArgs.Empty );
 			}
 		}
 		/// <summary>
-		///   The length in pixels of the label.
-		/// </summary>
-		public uint BoxOffset
-		{
-			get { return (uint)m_boxOff; }
-			set
-			{
-				m_boxOff = (int)value;
-				OnResize( this, EventArgs.Empty );
-			}
-		}
-		/// <summary>
-		///   Editor label.
+		///   Editor label text.
 		/// </summary>
 		public string Label
 		{
@@ -116,117 +92,55 @@ namespace MiForms
 		}
 
 		/// <summary>
-		///   The enum type.
+		///   Offset between the label and path box.
 		/// </summary>
-		public Type EnumType
+		public uint BoxOffset
 		{
-			get { return m_type; }
-			set
-			{
-				if( value != null && !value.IsEnum )
-					MessageBox.Show( this, "Non enum type given to EnumBox.", "Invalid Type" );
-
-				m_type = value;
-				box.Items.Clear();
-
-				if( m_type != null )
-				{
-					for( int i = 0; i < Enum.GetNames( m_type ).Length; i++ )
-						box.Items.Add( Enum.GetName( m_type, i ) );
-				}
+			get { return (uint)m_boxOff; }
+			set 
+			{ 
+				m_boxOff = (int)value;
+				OnResize( this, EventArgs.Empty );
 			}
 		}
 
 		/// <summary>
-		///   Selected index.
+		///   If the dialog should show the new folder button.
 		/// </summary>
-		public int SelectedIndex
+		public bool ShowNewFolderButton
 		{
-			get { return box.SelectedIndex; }
-			set { box.SelectedIndex = value; }
+			get { return openDialog.ShowNewFolderButton; }
+			set { openDialog.ShowNewFolderButton = value; }
 		}
 		/// <summary>
-		///   Selected index.
+		///   The descriptive text displayed above the tree view control in the dialog box.
 		/// </summary>
-		public string SelectedText
+		public string Description
 		{
-			get { return box.SelectedText; }
-			set { box.SelectedText = value; }
+			get { return openDialog.Description; }
+			set { openDialog.Description = value; }
 		}
 		/// <summary>
-		///   The control text.
+		///   The initial directory for the select folder dialog.
 		/// </summary>
-		public string BoxText
+		public Environment.SpecialFolder RootFolder
 		{
-			get { return box.Text; }
-			set { box.Text = value; }
+			get { return openDialog.RootFolder; }
+			set { openDialog.RootFolder = value; }
 		}
 
 		/// <summary>
-		///   Items in the enum box.
+		///   Current path string.
 		/// </summary>
-		public ComboBox.ObjectCollection Items
+		public string Path
 		{
-			get { return box.Items; }
-		}
-
-		/// <summary>
-		///   Update the control to use the current color scheme.
-		/// </summary>
-		/// <param name="sender">
-		///   Event sender (always null).
-		/// </param>
-		/// <param name="e">
-		///   Event args (always empty)
-		/// </param>
-		protected override void OnThemeChanged( object sender, EventArgs e )
-		{
-			BackColor = Theme.BackColor;
-			ForeColor = Theme.ForeColor;
-
-			label.BackColor = BackColor;
-			label.ForeColor = ForeColor;
-			box.BackColor   = BackColor;
-			box.ForeColor   = ForeColor;
-		}
-
-		private void OnLoadControl( object sender, EventArgs e )
-		{
-			label.Text = m_label;
-		}
-		private void OnResize( object sender, EventArgs e )
-		{
-			if( HasLabel )
+			get { return m_path; }
+			set 
 			{
-				MinimumSize = new Size( m_labLen + 50, MinimumSize.Height );
-
-				label.Left = 0;
-				label.Size = new Size( m_labLen, Height );
-
-				box.Left = label.Width + m_boxOff;
+				m_path = value;
+				pathBox.Text = m_path;
+				OnValueChanged();
 			}
-			else
-			{
-				MinimumSize = new Size( 50, MinimumSize.Height );
-
-				label.Left = Right;
-				box.Left   = m_boxOff;
-			}
-
-			box.Width = Width - box.Left;
-			box.DropDownWidth = (uint)( box.Width - box.Height );
-		}
-
-		private void SelectionIndexChanged( object sender, EventArgs e )
-		{
-			EventHandler handler;
-
-			lock( m_changedLock )
-			{
-				handler = m_changed;
-			}
-
-			handler?.Invoke( this, EventArgs.Empty );
 		}
 
 		/// <summary>
@@ -250,10 +164,95 @@ namespace MiForms
 			}
 		}
 
-		string m_label;
-		Type   m_type;
-		int    m_labLen,
-		       m_boxOff;
+		/// <summary>
+		///   Update the control to use the current color scheme.
+		/// </summary>
+		/// <param name="sender">
+		///   Event sender (always null).
+		/// </param>
+		/// <param name="e">
+		///   Event args (always empty)
+		/// </param>
+		protected override void OnThemeChanged( object sender, EventArgs e )
+		{
+			BackColor = Theme.BackColor;
+			ForeColor = Theme.ForeColor;
+
+			label.BackColor    = BackColor;
+			label.ForeColor    = ForeColor;
+			boxPanel.BackColor = BackColor;
+			boxPanel.ForeColor = ForeColor;
+			pathBox.BackColor  = Theme.FieldColor;
+			pathBox.ForeColor  = ForeColor;
+			butPanel.BackColor = BackColor;
+			butPanel.ForeColor = ForeColor;
+			pathBut.BackColor  = BackColor;
+			pathBut.ForeColor  = ForeColor;
+
+			pathBut.BackgroundImage = Theme.UseDarkTheme ? butImages.Images[ 0 ] : butImages.Images[ 1 ];
+		}
+
+		private void OnLoadControl( object sender, EventArgs e )
+		{
+			label.Text = m_label;
+			pathBox.Text = m_path;
+		}
+		private void OnResize( object sender, EventArgs e )
+		{
+			if( HasLabel )
+			{
+				MinimumSize = new Size( m_labLen + m_boxOff + 70 + butPanel.Width + 2, MinimumSize.Height );
+
+				label.Left  = 0;
+				label.Width = m_labLen;
+
+				boxPanel.Left  = label.Right + m_boxOff;
+				boxPanel.Width = Width - butPanel.Width - 2 - boxPanel.Left;
+			}
+			else
+			{
+				MinimumSize = new Size( m_boxOff + 70 + butPanel.Width + 2, MinimumSize.Height );
+
+				label.Left = Right;
+
+				boxPanel.Left  = m_boxOff;
+				boxPanel.Width = Width - butPanel.Width - 2;
+			}
+
+			butPanel.Left = boxPanel.Right + 2;
+		}
+
+		private void PathTextChanged( object sender, EventArgs e )
+		{
+			Path = pathBox.Text;
+			OnValueChanged();
+		}
+		private void PathButtonClicked( object sender, EventArgs e )
+		{
+			if( openDialog.ShowDialog( this ) == DialogResult.OK )
+			{
+				Path = openDialog.SelectedPath;
+				OnValueChanged();
+			}
+		}
+
+		private void OnValueChanged()
+		{
+			EventHandler handler;
+
+			lock( m_changedLock )
+			{
+				handler = m_changed;
+			}
+
+			handler?.Invoke( this, EventArgs.Empty );
+		}
+
+		string m_label,
+		       m_path;
+
+		int m_labLen,
+		    m_boxOff;
 
 		EventHandler m_changed;
 		readonly object m_changedLock = new object();

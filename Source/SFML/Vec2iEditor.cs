@@ -39,13 +39,14 @@ namespace MiForms
 		///   Constructor.
 		/// </summary>
 		public Vec2iEditor()
+		:	base()
 		{
 			InitializeComponent();
+			OnThemeChanged( null, EventArgs.Empty );
+
 			Resize += OnResize;
 			xBox.ValueChanged += XChanged;
 			yBox.ValueChanged += YChanged;
-
-			OnThemeChanged( null, EventArgs.Empty );
 
 			m_label     = nameof( Vector2i );
 			m_labLen    = label.Width;
@@ -343,10 +344,16 @@ namespace MiForms
 
 			label.BackColor = BackColor;
 			label.ForeColor = ForeColor;
+
 			xLab.BackColor  = BackColor;
 			xLab.ForeColor  = ForeColor;
 			yLab.BackColor  = BackColor;
 			yLab.ForeColor  = ForeColor;
+
+			xBox.BackColor  = BackColor;
+			xBox.ForeColor  = ForeColor;
+			yBox.BackColor  = BackColor;
+			yBox.ForeColor  = ForeColor;
 		}
 
 		private void OnLoadControl( object sender, EventArgs e )

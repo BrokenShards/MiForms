@@ -68,7 +68,7 @@ namespace MiForms
 			// 
 			this.box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
 			this.box.DropDownHeight = ((uint)(106u));
-			this.box.DropDownWidth = ((uint)(318u));
+			this.box.DropDownWidth = ((uint)(300u));
 			this.box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.box.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
 			this.box.IntegralHeight = true;

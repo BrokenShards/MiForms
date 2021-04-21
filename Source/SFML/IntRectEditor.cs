@@ -40,11 +40,12 @@ namespace MiForms
 		///   Constructor.
 		/// </summary>
 		public IntRectEditor()
+		:	base()
 		{
 			InitializeComponent();
-			Resize += OnResize;
-
 			OnThemeChanged( null, EventArgs.Empty );
+
+			Resize += OnResize;
 
 			m_label   = "Rect";
 			m_labLen  = label.Width;
@@ -408,8 +409,12 @@ namespace MiForms
 			BackColor = Theme.BackColor;
 			ForeColor = Theme.ForeColor;
 
-			label.BackColor = BackColor;
-			label.ForeColor = ForeColor;
+			label.BackColor   = BackColor;
+			label.ForeColor   = ForeColor;
+			posVec.BackColor  = BackColor;
+			posVec.ForeColor  = ForeColor;
+			sizeVec.BackColor = BackColor;
+			sizeVec.ForeColor = ForeColor;
 		}
 
 		private void OnValueChanged( object sender, EventArgs e )

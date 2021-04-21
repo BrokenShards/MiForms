@@ -135,13 +135,13 @@ namespace MiForms
 			downBut.BackColor = BackColor;
 			downBut.ForeColor = ForeColor;
 
-			boxPanel.BackColor = Theme.FieldColor;
+			boxPanel.BackColor = BackColor;
 			boxPanel.ForeColor = ForeColor;
 			butPanel.BackColor = BackColor;
 			butPanel.ForeColor = ForeColor;
 
-			upBut.BackgroundImage   = Theme.UseDarkTheme ? butImages.Images[ 0 ] : butImages.Images[ 2 ];
-			downBut.BackgroundImage = Theme.UseDarkTheme ? butImages.Images[ 1 ] : butImages.Images[ 3 ];
+			upBut.BackgroundImage   = butImages.Images[ Theme.UseDarkTheme ? 0 : 2 ];
+			downBut.BackgroundImage = butImages.Images[ Theme.UseDarkTheme ? 1 : 3 ];
 		}
 
 		private void UpClicked( object sender, EventArgs e )

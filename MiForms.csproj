@@ -61,7 +61,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DropDownBox.resx</DependentUpon>
     </Compile>
+    <Compile Include="Source\FileSaver.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\FileSaver.Designer.cs">
+      <DependentUpon>FileSaver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\FolderLoader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\FolderLoader.Designer.cs">
+      <DependentUpon>FolderLoader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\MiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\MovableForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Source\SFML\ColorEditor.cs">
@@ -150,6 +165,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Source\EnumBox.resx">
       <DependentUpon>EnumBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\FileSaver.resx">
+      <DependentUpon>FileSaver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\FolderLoader.resx">
+      <DependentUpon>FolderLoader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\FileLoader.resx">
       <DependentUpon>FileLoader.cs</DependentUpon>
