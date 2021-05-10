@@ -22,10 +22,9 @@
 
 using System;
 using System.ComponentModel;
-using SFML.System;
+using System.Drawing;
 
-using ContentAlignment = System.Drawing.ContentAlignment;
-using Size             = System.Drawing.Size;
+using SFML.System;
 
 namespace MiForms
 {
@@ -184,7 +183,7 @@ namespace MiForms
 				else
 					m_label = value;
 
-				if( label != null )
+				if( label is not null )
 					label.Text = value;
 			}
 		}
@@ -413,14 +412,14 @@ namespace MiForms
 			handler?.Invoke( this, EventArgs.Empty );
 		}
 
-		Vector2u m_value;
-		string   m_label;
-		uint     m_inc;
-		int      m_labLen,
-		         m_boxLabLen,
-		         m_boxLen;
+		private Vector2u m_value;
+		private string   m_label;
+		private uint     m_inc;
+		private int      m_labLen,
+		                 m_boxLabLen,
+		                 m_boxLen;
 
-		EventHandler m_changed;
-		readonly object m_changedLock = new object();
+		private EventHandler m_changed;
+		private readonly object m_changedLock = new();
 	}
 }

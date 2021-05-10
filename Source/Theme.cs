@@ -182,7 +182,7 @@ namespace MiForms
 		}
 
 		/// <summary>
-		///   Converts a <see cref="System.Drawing.Color"/> to a <see cref="SFML.Graphics.Color"/>.
+		///   Converts a <see cref="Color"/> to a <see cref="SFML.Graphics.Color"/>.
 		/// </summary>
 		/// <param name="col">
 		///   The color to convert.
@@ -195,7 +195,7 @@ namespace MiForms
 			return new SFML.Graphics.Color( col.R, col.G, col.B, col.A );
 		}
 		/// <summary>
-		///   Converts a <see cref="SFML.Graphics.Color"/> to a <see cref="System.Drawing.Color"/>.
+		///   Converts a <see cref="SFML.Graphics.Color"/> to a <see cref="Color"/>.
 		/// </summary>
 		/// <param name="col">
 		///   The color to convert.
@@ -229,6 +229,6 @@ namespace MiForms
 							 m_light_field = Color.FromArgb( 255, 255, 255, 255 );
 
 		private static EventHandler    m_theme_changed;
-		private static readonly object m_theme_changed_lock = new object();
+		private static readonly object m_theme_changed_lock = new();
 	}
 }

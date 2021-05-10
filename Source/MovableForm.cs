@@ -138,7 +138,7 @@ namespace MiForms
 		/// </param>
 		protected void SetDragControl( Control c )
 		{
-			if( c == null )
+			if( c is null )
 				return;
 
 			c.MouseDown += TitleMouseDown;
@@ -153,7 +153,7 @@ namespace MiForms
 		/// </param>
 		protected void UnsetDragControl( Control c )
 		{
-			if( c == null )
+			if( c is null )
 				return;
 
 			c.MouseDown -= TitleMouseDown;
@@ -167,15 +167,15 @@ namespace MiForms
 		/// <param name="m"></param>
 		protected override void WndProc( ref Message m )
 		{
-			if( m.Msg == 0x84 )
+			if( m.Msg is 0x84 )
 			{
 				Point pos = PointToClient( new Point( m.LParam.ToInt32() ) );
 
-				if( ( ResizePoint & (uint)WindowPoint.Top ) != 0 )
+				if( ( ResizePoint & (uint)WindowPoint.Top ) is not 0 )
 				{
 					if( pos.Y <= _grip )
 					{
-						if( ( ResizePoint & (uint)WindowPoint.Left ) != 0 )
+						if( ( ResizePoint & (uint)WindowPoint.Left ) is not 0 )
 						{
 							if( pos.X <= _grip )
 							{
@@ -183,7 +183,7 @@ namespace MiForms
 								return;
 							}
 						}
-						if( ( ResizePoint & (uint)WindowPoint.Right ) != 0 )
+						if( ( ResizePoint & (uint)WindowPoint.Right ) is not 0 )
 						{
 							if( pos.X >= ClientSize.Width - _grip )
 							{
@@ -196,11 +196,11 @@ namespace MiForms
 						return;
 					}
 				}				
-				if( ( ResizePoint & (uint)WindowPoint.Bottom ) != 0 )
+				if( ( ResizePoint & (uint)WindowPoint.Bottom ) is not 0 )
 				{
 					if( pos.Y >= ClientSize.Height - _grip )
 					{
-						if( ( ResizePoint & (uint)WindowPoint.Left ) != 0 )
+						if( ( ResizePoint & (uint)WindowPoint.Left ) is not 0 )
 						{
 							if( pos.X <= _grip )
 							{
@@ -208,7 +208,7 @@ namespace MiForms
 								return;
 							}
 						}
-						if( ( ResizePoint & (uint)WindowPoint.Right ) != 0 )
+						if( ( ResizePoint & (uint)WindowPoint.Right ) is not 0 )
 						{
 							if( pos.X >= ClientSize.Width - _grip )
 							{
@@ -222,7 +222,7 @@ namespace MiForms
 					}
 				}
 
-				if( ( ResizePoint & (uint)WindowPoint.Left ) != 0 )
+				if( ( ResizePoint & (uint)WindowPoint.Left ) is not 0 )
 				{
 					if( pos.X <= _grip )
 					{
@@ -230,7 +230,7 @@ namespace MiForms
 						return;
 					}
 				}
-				if( ( ResizePoint & (uint)WindowPoint.Right ) != 0 )
+				if( ( ResizePoint & (uint)WindowPoint.Right ) is not 0 )
 				{
 					if( pos.X >= ClientSize.Width - _grip )
 					{

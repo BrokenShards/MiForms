@@ -22,11 +22,10 @@
 
 using System;
 using System.ComponentModel;
-using System.Windows.Forms;
+using System.Drawing;
 
 using SFML.Graphics;
-
-using ContentAlignment = System.Drawing.ContentAlignment;
+using SFML.System;
 
 namespace MiForms
 {
@@ -302,7 +301,7 @@ namespace MiForms
 				else
 					m_label = value;
 
-				if( label != null )
+				if( label is not null )
 					label.Text = value;
 			}
 		}
@@ -381,8 +380,8 @@ namespace MiForms
 			get { return m_value; }
 			set
 			{
-				posVec.Value  = new SFML.System.Vector2f( value.Left,  value.Top );
-				sizeVec.Value = new SFML.System.Vector2f( value.Width, value.Height );
+				posVec.Value  = new Vector2f( value.Left,  value.Top );
+				sizeVec.Value = new Vector2f( value.Width, value.Height );
 			}
 		}
 
@@ -451,36 +450,36 @@ namespace MiForms
 		{
 			if( HasLabel )
 			{
-				MinimumSize = new System.Drawing.Size( m_labLen + posVec.MinimumSize.Width,
+				MinimumSize = new Size( m_labLen + posVec.MinimumSize.Width,
 													   MinimumSize.Height );
 
-				label.Location = new System.Drawing.Point( 0, 0 );
-				label.Size     = new System.Drawing.Size( m_labLen, Height );
+				label.Location = new Point( 0, 0 );
+				label.Size     = new Size( m_labLen, Height );
 
-				posVec.Location  = new System.Drawing.Point( label.Right, 0 );
-				posVec.Size      = new System.Drawing.Size( Width - m_labLen, Height / 2 );
-				sizeVec.Location = new System.Drawing.Point( label.Right, Height / 2 );
+				posVec.Location  = new Point( label.Right, 0 );
+				posVec.Size      = new Size( Width - m_labLen, Height / 2 );
+				sizeVec.Location = new Point( label.Right, Height / 2 );
 				sizeVec.Size     = posVec.Size;
 			}
 			else
 			{
-				MinimumSize = new System.Drawing.Size( posVec.MinimumSize.Width, MinimumSize.Height );
+				MinimumSize = new Size( posVec.MinimumSize.Width, MinimumSize.Height );
 
 				label.Left = Right;
 
-				posVec.Location  = new System.Drawing.Point( 0, 0 );
-				posVec.Size      = new System.Drawing.Size( Width, Height / 2 );
-				sizeVec.Location = new System.Drawing.Point( 0, Height / 2 );
+				posVec.Location  = new Point( 0, 0 );
+				posVec.Size      = new Size( Width, Height / 2 );
+				sizeVec.Location = new Point( 0, Height / 2 );
 				sizeVec.Size     = posVec.Size;
 			}
 		}
 
-		string    m_label;
-		FloatRect m_value;
-		float     m_inc;
-		int       m_labLen;
+		private string    m_label;
+		private FloatRect m_value;
+		private float m_inc;
+		private int m_labLen;
 
-		EventHandler m_changed;
-		readonly object m_changedLock = new object();
+		private EventHandler m_changed;
+		private readonly object m_changedLock = new();
 	}
 }

@@ -101,10 +101,7 @@ namespace MiForms
 		/// </summary>
 		public bool HasPickerButton
 		{
-			get
-			{
-				return m_hasPicker;
-			}
+			get { return m_hasPicker; }
 			set
 			{
 				m_hasPicker = value;
@@ -138,7 +135,7 @@ namespace MiForms
 				else
 					m_label = value;
 
-				if( label != null )
+				if( label is not null )
 					label.Text = value; 
 			}
 		}
@@ -404,22 +401,22 @@ namespace MiForms
 		{
 			colDialog.Color = System.Drawing.Color.FromArgb( Value.A, Value.R, Value.G, Value.B );
 
-			if( colDialog.ShowDialog( this ) == DialogResult.OK )
+			if( colDialog.ShowDialog( this ) is DialogResult.OK )
 			{
 				Value = new Color( colDialog.Color.R, colDialog.Color.G, colDialog.Color.B, colDialog.Color.A );
 				OnValueChanged();
 			}
 		}
 
-		Color  m_value;
-		string m_label;
+		private Color  m_value;
+		private string m_label;
 
-		bool m_hasPicker;
-		int  m_labLen,
-			 m_boxLen,
-			 m_boxLabLen;
+		private bool m_hasPicker;
+		private int  m_labLen,
+			         m_boxLen,
+			         m_boxLabLen;
 
-		EventHandler m_valueChanged;
-		readonly object m_valueLock = new object();
+		private EventHandler    m_valueChanged;
+		private readonly object m_valueLock = new();
 	}
 }

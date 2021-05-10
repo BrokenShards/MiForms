@@ -110,7 +110,7 @@ namespace MiForms
 				else
 					m_label = value;
 
-				if( label != null )
+				if( label is not null )
 					label.Text = value;
 			}
 		}
@@ -123,17 +123,14 @@ namespace MiForms
 			get { return m_type; }
 			set
 			{
-				if( value != null && !value.IsEnum )
+				if( value is not null && !value.IsEnum )
 					MessageBox.Show( this, "Non enum type given to EnumBox.", "Invalid Type" );
 
 				m_type = value;
 				box.Items.Clear();
 
-				if( m_type != null )
-				{
-					for( int i = 0; i < Enum.GetNames( m_type ).Length; i++ )
-						box.Items.Add( Enum.GetName( m_type, i ) );
-				}
+				for( int i = 0; m_type is not null && i < Enum.GetNames( m_type ).Length; i++ )
+					box.Items.Add( Enum.GetName( m_type, i ) );
 			}
 		}
 
@@ -250,12 +247,12 @@ namespace MiForms
 			}
 		}
 
-		string m_label;
-		Type   m_type;
-		int    m_labLen,
-		       m_boxOff;
+		private string m_label;
+		private Type   m_type;
+		private int    m_labLen,
+		               m_boxOff;
 
-		EventHandler m_changed;
-		readonly object m_changedLock = new object();
+		private EventHandler m_changed;
+		private readonly object m_changedLock = new();
 	}
 }

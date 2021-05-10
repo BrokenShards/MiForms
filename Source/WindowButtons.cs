@@ -114,17 +114,17 @@ namespace MiForms
 
 		private void MinimizedClicked( object sender, EventArgs e )
 		{
-			if( ParentForm == null )
+			if( ParentForm is null )
 				return;
 
 			ParentForm.WindowState = FormWindowState.Minimized;
 		}
 		private void MaximizedClicked( object sender, EventArgs e )
 		{
-			if( ParentForm == null )
+			if( ParentForm is null )
 				return;
 
-			ParentForm.WindowState = ParentForm.WindowState == FormWindowState.Maximized ?
+			ParentForm.WindowState = ParentForm.WindowState is FormWindowState.Maximized ?
 				FormWindowState.Normal : FormWindowState.Maximized;
 		}
 		private void CloseClicked( object sender, EventArgs e )

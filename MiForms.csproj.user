@@ -1,6 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <ProjectView>ProjectFiles</ProjectView>
-  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Source\DropDownBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\EnumBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\FileLoader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\FileSaver.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\FolderLoader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\MiControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\MiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Source\MovableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Source\NumberBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\SFML\ColorEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\SFML\FloatRectEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\SFML\IntRectEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\SFML\Vec2fEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\SFML\Vec2iEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\SFML\Vec2uEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Source\WindowButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

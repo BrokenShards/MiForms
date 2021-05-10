@@ -86,7 +86,7 @@ namespace MiForms
 				else
 					m_label = value;
 
-				if( label != null )
+				if( label is not null )
 					label.Text = value;
 			}
 		}
@@ -247,13 +247,13 @@ namespace MiForms
 			handler?.Invoke( this, EventArgs.Empty );
 		}
 
-		string m_label,
-		       m_path;
+		private string m_label,
+		               m_path;
 
-		int m_labLen,
-		    m_boxOff;
+		private int m_labLen,
+		            m_boxOff;
 
-		EventHandler m_changed;
-		readonly object m_changedLock = new object();
+		private EventHandler m_changed;
+		private readonly object m_changedLock = new();
 	}
 }

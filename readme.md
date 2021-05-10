@@ -1,5 +1,5 @@
 ﻿# MiForms
-A basic set of Windows Forms controls for use with SFML.
+A basic set of Windows Forms controls for use with SFML.Net.
 
 MiForms was written solely for my own use for my own projects.
 
@@ -13,6 +13,9 @@ make sure that `Automatically Populate Toolbox` is set to true, this way, MiForm
 appear in your Toolbox after it is built.
 
 ## Changelog
+
+### Version 1.0.0
+- MiForms now targets .Net 5 and has updated code style for C#9.
 
 ### Version 0.2.0
 - Added `FileSaver` control for saving files.
